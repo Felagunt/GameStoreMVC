@@ -8,6 +8,7 @@ using Ninject;
 using System.Configuration;
 using GameStore.Domain.Entities;
 using GameStore.Domain.Abstract;
+using GameStore.Domain.Concrete;
 
 namespace GameStore.WebUI.Infrastructure
 {
@@ -39,16 +40,7 @@ namespace GameStore.WebUI.Infrastructure
         /// </summary>
         private void AddBindings()
         {
-            //fake repo
-            Mock<IGameRepository> mock = new Mock<IGameRepository>();
-            mock.Setup(m => m.Games).Returns(new List<Game>
-            {
-                new Game {Name="SimCity",Price=1499 },
-                new Game {Name="TITANFALL", Price=2299 },
-                new Game {Name="Battlefield 4",Price=899.4m }
-            });
-            //all time return fake repo when ninject recive request to imp IGameRepository
-            kernel.Bind<IGameRepository>().ToConstant(mock.Object);
+            kernel.Bind<IGameRepository>().To<EFGameRepository>();
         }
     }
 }

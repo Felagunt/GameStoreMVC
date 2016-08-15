@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="Abstract\IGameRepository.cs" />
     <Compile Include="Concrete\EFDBContext.cs" />
+    <Compile Include="Concrete\EFGameRepository.cs" />
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
