@@ -33,3 +33,8 @@ C:\Users\BEST\Documents\GameStoreMVC\GameStoreMVC\GameStore.Domain\bin\Debug\Sys
 C:\Users\BEST\Documents\GameStoreMVC\GameStoreMVC\GameStore.Domain\obj\Debug\GameStore.Domain.csprojResolveAssemblyReference.cache
 C:\Users\BEST\Documents\GameStoreMVC\GameStoreMVC\GameStore.Domain\obj\Debug\GameStore.Domain.dll
 C:\Users\BEST\Documents\GameStoreMVC\GameStoreMVC\GameStore.Domain\obj\Debug\GameStore.Domain.pdb
+C:\Users\BEST\Documents\GameStoreMVC\GameStoreMVC\GameStore.Domain\bin\Debug\GameStore.Domain.dll.config
+C:\Users\BEST\Documents\GameStoreMVC\GameStoreMVC\GameStore.Domain\bin\Debug\EntityFramework.dll
+C:\Users\BEST\Documents\GameStoreMVC\GameStoreMVC\GameStore.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\BEST\Documents\GameStoreMVC\GameStoreMVC\GameStore.Domain\bin\Debug\EntityFramework.xml
+C:\Users\BEST\Documents\GameStoreMVC\GameStoreMVC\GameStore.Domain\bin\Debug\EntityFramework.SqlServer.xml
