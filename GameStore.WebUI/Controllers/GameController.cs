@@ -19,20 +19,22 @@ namespace GameStore.WebUI.Controllers
             repository = repo;
         }
 
-        public ViewResult List(int page = 1)
+        public ViewResult List(string category, int page = 1)
         {
             GamesListViewModel model = new GamesListViewModel
             {
                 Games = repository.Games
-            .OrderBy(game => game.GameId)
-            .Skip((page - 1) * pageSize)
-            .Take(pageSize),
+                    .Where(p => category == null || p.Category == category)
+                    .OrderBy(game => game.GameId)
+                    .Skip((page - 1) * pageSize)
+                    .Take(pageSize),
                 PageInfo = new PageInfo
                 {
                     CurrentPage = page,
                     ItemsPerPage = pageSize,
                     TotalItems = repository.Games.Count()
-                }
+                },
+                CurrentCategory = category
             };
             return View(model);
         }   
