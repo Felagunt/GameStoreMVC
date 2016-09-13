@@ -66,5 +66,31 @@ namespace GameStore.UnitTests
                     + @"<a class=""btn btn-default"" href=""Page3"">3</a>",
                     result.ToString());            
         }
+
+        [TestMethod]
+        public void Can_Filter_Games()
+        {
+            //arrange
+            Mock<IGameRepository> mock = new Mock<IGameRepository>();
+            mock.Setup(m => m.Games).Returns(new List<Game>
+            {
+                new Game { GameId = 1, Name = "Game1", Category = "Cat1" },
+                new Game { GameId = 2, Name = "Game2", Category = "Cat2" },
+                new Game { GameId = 3, Name = "Game3", Category = "Cat3" },
+                new Game { GameId = 4, Name = "Game4", Category = "Cat4" },
+                new Game { GameId = 5, Name = "Game5", Category = "Cat5" }
+            });
+            GameController controller = new GameController(mock.Object);
+            controller.pageSize = 3;
+
+            //act
+            List<Game> result=((GamesListViewModel)controller.List("Cat2",1).Model)
+                .Games.ToList();
+
+            //assert
+            Assert.AreEqual(result.Count(), 2);
+            Assert.IsTrue(result[0].Name == "Game4" && result[0].Category == "Cat2");
+            Assert.IsTrue(result[1].Name == "Game5" && result[1].Category == "Cat2");
+        }
     }
 }

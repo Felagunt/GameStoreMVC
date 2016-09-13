@@ -81,7 +81,7 @@ namespace GameStore.UnitTests
 
             //act
             GamesListViewModel result
-                = (GamesListViewModel)controller.List(2).Model;
+                = (GamesListViewModel)controller.List(null, 2).Model;
 
             //assert
             PageInfo pageInfo = result.PageInfo;
