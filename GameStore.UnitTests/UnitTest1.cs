@@ -136,5 +136,32 @@ namespace GameStore.UnitTests
 
             Assert.AreEqual(categoryToSelet, result);
         }
+
+        [TestMethod]
+        public void Generete_Category_Specific_Game_Count()
+        {
+            //arrange
+            Mock<IGameRepository> mock = new Mock<IGameRepository>();
+            mock.Setup(m => m.Games).Returns(new List<Game>
+            {
+                new Game {GameId = 1, Name = "Game1", Category="Cat1" },
+                new Game {GameId = 1, Name = "Game2", Category="Cat2" },
+                new Game {GameId = 1, Name = "Game3", Category="Cat3" },
+                new Game {GameId = 1, Name = "Game4", Category="Cat4" },
+                new Game {GameId = 1, Name = "Game5", Category="Cat5" }
+            });
+            GameController controller = new GameController(mock.Object);
+            controller.pageSize = 3;
+
+            int res1 = ((GamesListViewModel)controller.List("Cat1").Model).PageInfo.TotalItems;
+            int res2 = ((GamesListViewModel)controller.List("Cat2").Model).PageInfo.TotalItems;
+            int res3 = ((GamesListViewModel)controller.List("Cat3").Model).PageInfo.TotalItems;
+            int resAll = ((GamesListViewModel)controller.List(null).Model).PageInfo.TotalItems;
+
+            Assert.AreEqual(res1, 2);
+            Assert.AreEqual(res2, 2);
+            Assert.AreEqual(res3, 1);
+            Assert.AreEqual(resAll, 5);
+        }
     }
 }
