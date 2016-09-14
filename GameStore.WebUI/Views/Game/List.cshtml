@@ -8,8 +8,9 @@
 
 @foreach (var p in @Model.Games)
 {
-    @Html.Partial("GameSummary",p)
+    @Html.Partial("GameSummary", p)
 }
 <div class="btn-group pull-right">
-    @Html.PageLinks(Model.PageInfo, x => Url.Action("List",new { page = x }))
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("List",
+        new { page = x, category = Model.CurrentCategory }))
 </div>
