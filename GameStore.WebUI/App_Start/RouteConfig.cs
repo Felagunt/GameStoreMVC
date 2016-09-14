@@ -35,9 +35,8 @@ namespace GameStore.WebUI
 
             routes.MapRoute(null,
                 "{category}/Page{page}",
-                new { controller = "Game", action = "List"},
-                new { page = @"\d+"})
-                );
+                new { controller = "Game", action = "List" },
+                new { page = @"\d+" });
 
             routes.MapRoute(null, "{controller}/{action}");
         }
