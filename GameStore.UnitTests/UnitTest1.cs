@@ -32,7 +32,7 @@ namespace GameStore.UnitTests
             controller.pageSize = 3;
 
             //act
-            GamesListViewModel result = (GamesListViewModel)controller.List(null,2).Model;
+            GamesListViewModel result = (GamesListViewModel)controller.List(null, 2).Model;
 
             //assert
             List<Game> games = result.Games.ToList();
@@ -64,7 +64,7 @@ namespace GameStore.UnitTests
             Assert.AreEqual(@"<a class=""btn btn-default"" href=""Page1"">1</a>"
                     + @"<a class=""btn btn-default btn-primary selected"" href=""Page2"">2</a>"
                     + @"<a class=""btn btn-default"" href=""Page3"">3</a>",
-                    result.ToString());            
+                    result.ToString());
         }
 
         [TestMethod]
@@ -84,13 +84,38 @@ namespace GameStore.UnitTests
             controller.pageSize = 3;
 
             //act
-            List<Game> result=((GamesListViewModel)controller.List("Cat2",1).Model)
+            List<Game> result = ((GamesListViewModel)controller.List("Cat2", 1).Model)
                 .Games.ToList();
 
             //assert
             Assert.AreEqual(result.Count(), 2);
             Assert.IsTrue(result[0].Name == "Game4" && result[0].Category == "Cat2");
             Assert.IsTrue(result[1].Name == "Game5" && result[1].Category == "Cat2");
+        }
+
+        [TestMethod]
+        public void Can_Crete_Categories()
+        {
+            //fake repo
+            Mock<IGameRepository> mock = new Mock<IGameRepository>();
+            mock.Setup(m => m.Games).Returns(new List<Game>
+            {
+                new Game {GameId = 1, Name = "Game1", Category = "RPG" },
+                new Game {GameId = 2, Name = "Game3", Category = "Шутер" },
+                new Game {GameId = 2, Name = "Game4", Category = "Симулятор" },
+                new Game {GameId = 2, Name = "Game5", Category = "Симулятор" }
+            });
+
+            //
+            NavController target = new NavController(mock.Object);
+
+            //
+            List<string> results = ((IEnumerable<string>)target.Menu().Model).ToString();
+
+            Assert.AreEqual(results.Count(), 3);
+            Assert.AreEqual(results[0], "RPG");
+            Assert.AreEqual(results[1], "Симулятор");
+            Assert.AreEqual(results[2], "Шутер");
         }
     }
 }
