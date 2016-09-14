@@ -117,5 +117,24 @@ namespace GameStore.UnitTests
             Assert.AreEqual(results[1], "Симулятор");
             Assert.AreEqual(results[2], "Шутер");
         }
+
+        [TestMethod]
+        public void Indicates_Selected_Category()
+        {
+            Mock<IGameRepository> mock = new Mock<IGameRepository>();
+            mock.Setup(m => m.Games).Returns(new Game[]
+            {
+                new Game { GameId = 1, Name = "Game1", Category = "Симулятор" },
+                new Game { GameId = 2, Name = "Game2", Category = "Шутер" }
+            });
+
+            NavController target = new NavController(mock.Object);
+
+            string categoryToSelet = "Шутер";
+
+            string result = target.Menu(categoryToSelet).ViewBag.SelectedCategory;
+
+            Assert.AreEqual(categoryToSelet, result);
+        }
     }
 }
