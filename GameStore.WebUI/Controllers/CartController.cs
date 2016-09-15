@@ -12,6 +12,16 @@ namespace GameStore.WebUI.Controllers
     public class CartController : Controller
     {
         private IGameRepository repository;
+
+        public ViewResult Index(string returnUrl)
+        {
+            return View(new CartIndexViewModel
+            {
+                Cart = GetCart(),
+                ReturnUrl = returnUrl
+            });
+        }
+
         public CartController(IGameRepository repo)
         {
             repository = repo;
