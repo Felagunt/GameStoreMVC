@@ -12,12 +12,12 @@ namespace GameStore.Domain.Entities
         [Required(ErrorMessage = "Write your name")]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Enter your adress")]
-        [Display(Name="First addres")]
+        [Required(ErrorMessage = "Enter your address")]
+        [Display(Name="First address")]
         public string Line1 { get; set; }
-        [Display(Name="Second addres")]
+        [Display(Name="Second address")]
         public string Line2 { get; set; }
-        [Display(Name="Third")]
+        [Display(Name="Third address")]
         public string Line3 { get; set; }
 
         [Required(ErrorMessage = "Select town")]
