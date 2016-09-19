@@ -7,7 +7,7 @@ using GameStore.Domain.Entities;
 
 namespace GameStore.Domain.Abstract
 {
-    interface IOrderProcessor
+    public interface IOrderProcessor
     {
         void ProcessOrder(Cart cart, ShippingDetails shippingDetails);
     }
