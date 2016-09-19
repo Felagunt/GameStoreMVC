@@ -30,7 +30,7 @@ namespace GameStore.Domain.Concrete
         {
             emailSettings = settings;
         }
-        
+
         public void ProcessOrder(Cart cart, ShippingDetails shippingInfo)
         {
             using (var smtpClient = new SmtpClient())
@@ -80,7 +80,7 @@ namespace GameStore.Domain.Concrete
                                         emailSettings.MailToAddress,
                                         "New order send",
                                         body.ToString());
-                if(emailSettings.WrireAsFile)
+                if (emailSettings.WrireAsFile)
                 {
                     mailMessage.BodyEncoding = Encoding.UTF8;
                 }

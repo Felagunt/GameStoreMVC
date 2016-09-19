@@ -81,7 +81,7 @@
     <Compile Include="Abstract\IOrderProcessor.cs" />
     <Compile Include="Concrete\EFDBContext.cs" />
     <Compile Include="Concrete\EFGameRepository.cs" />
-    <Compile Include="Concrete\EmailSettings.cs" />
+    <Compile Include="Concrete\EmailOrderProcessor.cs" />
     <Compile Include="Entities\Cart.cs" />
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\ShippingDetails.cs" />
